@@ -78,3 +78,19 @@ function updateTaskStatus(target, taskId){
     }
   });
 }
+
+function deleteTask(taskId){
+  if(confirm("Do you really want to delete task?")){
+    $.ajax({
+      url: 'delete.php',
+      method: 'POST',
+      data: {id: taskId},
+      success: function(data){
+        $('#ajax_msg').css("display", "block").delay(3000).slideUp(300).html(data);
+      }
+    });
+    $('#task-list').load('read.php');
+
+  }
+  return false;
+}
