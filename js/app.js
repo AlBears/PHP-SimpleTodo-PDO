@@ -17,3 +17,64 @@ $(document).ready(function(){
   });
   $('#task-list').load('read.php');
 });
+
+function makeElementEditable(div){
+  div.style.border = "1px solid lavender";
+  div.style.padding = "5px";
+  div.style.background = "white";
+  div.contentEditable = true;
+}
+
+function updateTaskName(target, taskId){
+  var data = target.textContent;
+  target.style.border = "none";
+  target.style.padding = "0";
+  target.style.background = "#ececec";
+  target.contentRditable = false;
+
+  $.ajax({
+    url: 'update.php',
+    method: 'POST',
+    data: {name: data, id: taskId},
+    success: function(data){
+      $('#ajax_msg').css("display", "block").delay(3000).slideUp(300).html(data);
+
+    }
+  });
+}
+
+function updateTaskDescription(target, taskId){
+  var data = target.textContent;
+  target.style.border = "none";
+  target.style.padding = "0";
+  target.style.background = "#ececec";
+  target.contentRditable = false;
+
+  $.ajax({
+    url: 'update.php',
+    method: 'POST',
+    data: {description: data, id: taskId},
+    success: function(data){
+      $('#ajax_msg').css("display", "block").delay(3000).slideUp(300).html(data);
+
+    }
+  });
+}
+
+function updateTaskStatus(target, taskId){
+  var data = target.textContent;
+  target.style.border = "none";
+  target.style.padding = "0";
+  target.style.background = "#ececec";
+  target.contentRditable = false;
+
+  $.ajax({
+    url: 'update.php',
+    method: 'POST',
+    data: {status: data, id: taskId},
+    success: function(data){
+      $('#ajax_msg').css("display", "block").delay(3000).slideUp(300).html(data);
+
+    }
+  });
+}
