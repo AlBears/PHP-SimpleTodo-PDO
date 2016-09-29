@@ -13,8 +13,7 @@ $(document).ready(function(){
         $('#ajax_msg').css("display", "block").delay(3000).slideUp(300).html(data);
         document.getElementById('create-task').reset();
       }
-
     });
-
   });
+  $('#task-list').load('read.php');
 });
